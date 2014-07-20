@@ -132,7 +132,7 @@ ul {
 .primary {
 	padding: 10px 10px 5px 10px;
 	font-size: 14px;
-	/*line-height: 185%;*/
+	line-height: 185%;
 	overflow: hidden;
 	}
 .primary-title {
@@ -483,4 +483,5 @@ img.alignleft {
 .save-code-tip{font-size: 14px; text-align:center;}
 
 .video-list-item{border: 1px solid red;}
+.video-list-item video{border: 1px solid red; margin: 0; padding: 0;}
 
