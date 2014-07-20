@@ -31,13 +31,16 @@
                     data : {
                         url : urlencode( url ),
                         jsonp : 'videolists',
-                        hd : 2,
+                        //hd : 2,
                         ftype : 'mp4'
                     },
                     success : function( data ){
-                        var videoContent = data[0] || [];
+                        var videoContent;
+                        if( data.length >>> 0 ) {
+                             videoContent = data[0];  
+                        }
                         $('.loading-box').hide(0);
-                        if( videoContent.files.length ){
+                        if( videoContent && videoContent.files.length ){
                             var videoUrl = videoContent.files[0].furl;
                             input.val( videoUrl );
                             insertBtn.attr('data-video-url' , videoUrl );
