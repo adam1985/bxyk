@@ -132,7 +132,7 @@ ul {
 .primary {
 	padding: 10px 10px 5px 10px;
 	font-size: 14px;
-	line-height: 185%;
+	/*line-height: 185%;*/
 	overflow: hidden;
 	}
 .primary-title {
