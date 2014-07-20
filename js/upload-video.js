@@ -90,7 +90,7 @@
 
 
             if( videoUrl ) {
-                if( typeof tinyMCE == 'undefined' ) {
+                if( typeof tinyMCE != 'undefined' ) {
                     tinyMCE.execCommand("mceInsertContent", false, '[[videoBase64=' + $.base64.btoa( videoUrl + '||' + poster  ) + ']]');
                 } else {
                     var content = $('#content')[0];

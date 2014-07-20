@@ -136,7 +136,7 @@
                         prompt("上传成功", path + fileName);
 						$('#remote-upload').val(path + fileName);
                         //var $img = $(img);
-                        if( typeof tinyMCE == 'undefined' ) {
+                        if( typeof tinyMCE != 'undefined' ) {
                             tinyMCE.execCommand("mceInsertContent", false, '<img src="' + path + fileName + '" />');
                         } else {
                             var content = $('#content')[0];
