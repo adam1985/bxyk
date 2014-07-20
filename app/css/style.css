@@ -133,6 +133,7 @@ ul {
 	padding: 10px 10px 5px 10px;
 	font-size: 14px;
 	/*line-height: 185%;*/
+	border: 1px solid red;
 	overflow: hidden;
 	}
 .primary-title {
