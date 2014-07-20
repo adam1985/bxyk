@@ -136,7 +136,12 @@
                         prompt("上传成功", path + fileName);
 						$('#remote-upload').val(path + fileName);
                         //var $img = $(img);
-                        tinyMCE.execCommand("mceInsertContent", false, '<img src="' + path + fileName + '" />');
+                        if( typeof tinyMCE == 'undefined' ) {
+                            tinyMCE.execCommand("mceInsertContent", false, '<img src="' + path + fileName + '" />');
+                        } else {
+                            var content = $('#content')[0];
+                            content.innerHTML += '<img src="' + path + fileName + '" />';
+                        }
                         //p.append($img);
                         //$('#content_ifr').contents().find("#tinymce").append($img);
                         //$('.tb-close-icon').trigger('click');

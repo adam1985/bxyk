@@ -63,6 +63,7 @@ body{font-size:12px;font-family:Arial,"宋体"}
 .art-writer{padding-right:8px;}
 .art-writer i{width:16px;height:16px;margin:-1px 4px 0 0;background-position:0 -120px}
 .art-content{font-size:14px;line-height:26px;width:700px}
+.art-content img{ vertical-align: middle; margin-top: 8px;}
 .listpic{margin-top:10px;mw:800;overflow:hidden;}
 .art-footer{margin-top:20px}
 .digg-box a{display:block;border:1px solid #dedede;border-radius:4px;padding:0 8px;height:24px;line-height:24px;margin:5px 12px 5px 0;}
@@ -107,3 +108,5 @@ body{font-size:12px;font-family:Arial,"宋体"}
 .thumbnails{height:160;margin:0;width:100%;overflow:hidden;}
 .thumbnails a{display:block;text-align:center;}
 .thumbnails p{width:100%;height:20px;line-height:20px;overflow:hidden;text-align:center;}
+.video-list-item{ margin: 5px 0;}
+.video-list-item video{ vertical-align: middle;}
