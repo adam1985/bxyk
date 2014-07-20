@@ -133,7 +133,6 @@ ul {
 	padding: 10px 10px 5px 10px;
 	font-size: 14px;
 	/*line-height: 185%;*/
-	border: 1px solid red;
 	overflow: hidden;
 	}
 .primary-title {
@@ -482,4 +481,6 @@ img.alignleft {
 .quick-code-item img { display:block; width:100%;}
 .quick-code-item span{ display:block; text-align:center;color:#607fa6;}
 .save-code-tip{font-size: 14px; text-align:center;}
+
+.video-list-item{border: 1px solid red;}
 
