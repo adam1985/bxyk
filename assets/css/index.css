@@ -8,7 +8,7 @@
 .block{display:block;}
 .show{display:block;}
 .none{display:none;}
-.hide{display:none;}
+.warpper .hide{display:none !!important;}
 .inline-block{display:inline-block;}
 .rela{position:relative;}
 .abso{position:absolute;}
