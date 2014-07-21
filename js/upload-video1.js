@@ -1,4 +1,11 @@
 (function($){
+    var addVideoBtn = $('#add-video-btn'),
+        videoItem = $('#video-list-box').find('.video-item').eq(0);
+        
+    $(document).on('click', '#add-video-btn', function(){
+        $('#upload-tips-box').html('');
+        $('#video-list-box').append(videoItem.clone(true));
+    });
 
     var urlencode = function(uri){
         uri = uri.replace(/^(http:\/\/[^\/]*(?:youku|tudou|ku6|yinyuetai|letv|sohu|youtube|iqiyi|facebook|vimeo|cutv|cctv|pptv))xia.com\//,'$1.com/');
@@ -12,14 +19,42 @@
         var $this = $(this), 
             input = $this.closest('.video-item').find('input'),
             insertBtn = $this.closest('.video-item').find('.insert-video-btn'),
-            videoUrl = insertBtn.attr('data-video-url'),
             url = input.val();
         if( url ){
-            if(videoUrl) {
-                alert("该视频已转换过，请不要重复执行!");
+            if(/\.mp4/.test(url)) {
+                alert("该视频地址已经获取，请不要重复执行!");
             } else {
                 $('.loading-box').show(0);
-                insertBtn.attr('data-video-url' , url);
+                var flvxz = $.ajax({
+                    url : 'http://api.flvxz.com/',
+                    dataType : 'jsonp',
+                    jsonpCallback : 'videolists',
+                    data : {
+                        url : urlencode( url ),
+                        jsonp : 'videolists',
+                        //hd : 2,
+                        ftype : 'mp4'
+                    },
+                    success : function( data ){
+                        var videoContent;
+                        if( data.length >>> 0 ) {
+                             videoContent = data[0];  
+                        }
+                        $('.loading-box').hide(0);
+                        if( videoContent && videoContent.files.length ){
+                            var videoUrl = videoContent.files[0].furl;
+                            input.val( videoUrl );
+                            insertBtn.attr('data-video-url' , videoUrl );
+                            
+                            //$('#upload-tips-box').html( JSON.stringify(data));
+                            //prompt("转换成功，已抓取视频地址!", videoContent.files[0].furl);
+                        } else {
+                            alert('转换失败，重新试一下!');
+                        }
+                        
+                    }
+                });
+
                 var videoUrlParser = $.ajax({
                     url : 'http://baoxiaoyike.sinaapp.com/VideoUrlParser/server.php',
                     dataType : 'jsonp',
@@ -29,26 +64,18 @@
                     success : function(res){
                         if( res.status ) {
                             var poster = res.data.img;
-                            var title = res.data.title;
                             var rex = /(\w+)\/\//g;
                             poster = poster.replace(rex, '$1/');
-                            if( poster ) {
-                                insertBtn.attr('data-video-poster' , poster);
-                                $('#title').val( title );
-                            }
-                            alert("转换成功");
-                        } else {
-                           alert('转换失败,请重新试一下!'); 
+                            if( poster ) insertBtn.attr('data-video-poster' , poster);
                         }
-                    },
-                    complete : function(){
-                        $('.loading-box').hide(0);
-                    },
-                    error : function() {
-                        alert('转换失败,请重新试一下!');
                     }
                 });
 
+                $.when(flvxz, videoUrlParser).done(function(){
+                    prompt("转换成功，已抓取视频地址!", input.val());
+                }).fail(function(){
+                    alert('转换失败,抓取视频地址或是缩略图失败,请重新试一下!');
+                });
             }
             
         } else {
@@ -92,28 +119,6 @@
             }
             
     });
-
-    $(document).on('click', '.insert-source-video-btn', function(){
-        var sourceVideoInput = $('#source-video-input'),
-        val = sourceVideoInput.val();
-        if( val ){
-            if( typeof tinyMCE != 'undefined' ) {
-                tinyMCE.execCommand("mceInsertContent", false, '[[videoBase64=' + $.base64.btoa( val) + ']]');
-            } else {
-                var content = $('#content')[0];
-                content.innerHTML += ( '[[videoBase64=' + $.base64.btoa( val ) + ']]' );
-            }
-        } else {
-            alert('请输入视频源地址与缩略图!');
-        }
-
-        var postFormatVideo = $('#post-format-video');
-        if( postFormatVideo.length ) {
-            postFormatVideo[0].checked = true;
-        }
-
-    });
-
   
 
 }(jQuery));

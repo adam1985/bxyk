@@ -1,4 +1,5 @@
-define(['jquery', './initializeDigg',  './initializeFavorite', './initializeLazyload', './initializeShare'], 
+define(['jquery', './initializeDigg',  './initializeFavorite', 
+	'./initializeLazyload', './initializeShare', 'mediaelement'], 
 	function($, initializeDigg, initializeFavorite, initializeLazyload, initializeShare){
 		$(function(){
 			// 打分
@@ -13,6 +14,7 @@ define(['jquery', './initializeDigg',  './initializeFavorite', './initializeLazy
 			
 			//分享
 			initializeShare();
+
 			
 		});
 });

@@ -483,5 +483,7 @@ img.alignleft {
 .save-code-tip{font-size: 14px; text-align:center;}
 
 .video-list-item{}
-.video-list-item video{margin: 0; padding: 0;}
+.video-list-item video{margin: 0; padding: 0;width: 100%;}
+
+.joke-item-box img{width: 100%;}
 
