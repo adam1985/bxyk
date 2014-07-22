@@ -24,10 +24,10 @@ module.exports = function (grunt) {
                     "baseUrl": "assets/src",
                     "paths": {
                         "jquery": "jquery/jquery",
-                        "jquery.mobile": "mobile/jquery.mobile"
+                        'mediaelement' : 'http://adam1985.github.io/bxyk/js/mediaelement/build/mediaelement.min'
                     },
                     "shim": {
-                        //"touchslider": ["jquery", "jquery.mobile"]
+                        'mediaelement': ['jquery']
                     },
                     //"dir": "assets/dist",
                     "removeCombined": true,
