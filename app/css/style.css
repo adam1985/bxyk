@@ -482,7 +482,7 @@ img.alignleft {
 .quick-code-item span{ display:block; text-align:center;color:#607fa6;}
 .save-code-tip{font-size: 14px; text-align:center;}
 
-.video-list-item{}
+.video-list-item{ margin-bottom: 5px;}
 .video-list-item video{margin: 0; padding: 0;width: 100%;}
 
 .joke-item-box img{width: 100%;}
