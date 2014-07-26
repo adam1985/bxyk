@@ -113,6 +113,60 @@
         }
 
     });
+	
+	// 微信视频插入
+	$(document).on('click', '.insert-weixin-video-btn', function(){
+		var weixinVideoUrl = $('#weixin-video-input').val();
+		if( weixinVideoUrl ){
+			
+			$.ajax({
+				url : 'http://baoxiaoyike.sinaapp.com/weixin/getVideoInfo.php',
+				data : {
+					url : weixinVideoUrl
+				},
+				dataType : 'jsonp',
+				success : function( data ){
+					if( data.success ){
+						var pageUrl = data.pageUrl,
+							title = data.title,
+							imgSrc = data.thumb;
+							
+						$('#title').val(title);	
+						
+						$.ajax({
+							url : 'http://api.flvxz.com/',
+							jsonp : 'jsonp',
+							data : {
+								url : pageUrl,
+								ftype : 'mp4'
+							},
+							dataType : 'jsonp',
+							success : function(res){
+								if( res.length && res[0].files.length ){
+									var videoContent = res[0].files[0].furl + '||' + imgSrc;
+									if( typeof tinyMCE != 'undefined' ) {
+										tinyMCE.execCommand("mceInsertContent", false, '[[videoBase64=' + $.base64.btoa( videoContent) + ']]');
+									} else {
+										var content = $('#content')[0];
+										content.innerHTML += ( '[[videoBase64=' + $.base64.btoa( videoContent ) + ']]' );
+									}
+								} else {
+									alert('没有找到该视频，请重新试一下!');
+								}
+							}
+						});
+					}
+				}
+			});
+		} else {
+			alert("请输入微信视频页面地址!");
+		}
+		
+		var postFormatVideo = $('#post-format-video');
+        if( postFormatVideo.length ) {
+            postFormatVideo[0].checked = true;
+        }
+	});
 
   
 
