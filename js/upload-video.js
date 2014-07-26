@@ -133,7 +133,15 @@
 							
 						$('#title').val(title);	
 						
-						$.ajax({
+						var videoContent = pageUrl + '||' + imgSrc;
+						if( typeof tinyMCE != 'undefined' ) {
+							tinyMCE.execCommand("mceInsertContent", false, '[[videoBase64=' + $.base64.btoa( videoContent) + ']]');
+						} else {
+							var content = $('#content')[0];
+							content.innerHTML += ( '[[videoBase64=' + $.base64.btoa( videoContent ) + ']]' );
+						}
+						
+						/*$.ajax({
 							url : 'http://api.flvxz.com/',
 							jsonp : 'jsonp',
 							data : {
@@ -154,7 +162,7 @@
 									alert('没有找到该视频，请重新试一下!');
 								}
 							}
-						});
+						});*/
 					}
 				}
 			});
