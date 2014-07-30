@@ -68,9 +68,9 @@
 
             if( videoUrl ) {
                 if( typeof tinyMCE != 'undefined' ) {
-                    var mceContent = tinyMCE.getContent();
-                    tinyMCE.setContent(mceContent +'[[videoBase64=' + $.base64.btoa( videoUrl + '||' + poster  ) + ']]');
-                    //tinyMCE.execCommand("mceInsertContent", false, '[[videoBase64=' + $.base64.btoa( videoUrl + '||' + poster  ) + ']]');
+                    //var mceContent = tinyMCE.getContent();
+                    //tinyMCE.setContent(mceContent +'[[videoBase64=' + $.base64.btoa( videoUrl + '||' + poster  ) + ']]');
+                    tinyMCE.execCommand("mceInsertContent", false, '[[videoBase64=' + $.base64.btoa( videoUrl + '||' + poster  ) + ']]');
                 } else {
                     var content = $('#content')[0];
                     content.innerHTML += ( '[[videoBase64=' + $.base64.btoa( videoUrl + '||' + poster  ) + ']]' );
@@ -100,9 +100,9 @@
         val = sourceVideoInput.val();
         if( val ){
             if( typeof tinyMCE != 'undefined' ) {
-                var mceContent = tinyMCE.getContent();
-                tinyMCE.setContent(mceContent + '[[videoBase64=' + $.base64.btoa( val) + ']]');
-                //tinyMCE.execCommand("mceInsertContent", false, '[[videoBase64=' + $.base64.btoa( val) + ']]');
+                //var mceContent = tinyMCE.getContent();
+                //tinyMCE.setContent(mceContent + '[[videoBase64=' + $.base64.btoa( val) + ']]');
+                tinyMCE.execCommand("mceInsertContent", false, '[[videoBase64=' + $.base64.btoa( val) + ']]');
             } else {
                 var content = $('#content')[0];
                 content.innerHTML += ( '[[videoBase64=' + $.base64.btoa( val ) + ']]' );
@@ -139,9 +139,9 @@
 						
 						var videoContent = pageUrl + '||' + imgSrc;
 						if( typeof tinyMCE != 'undefined' ) {
-                            var mceContent = tinyMCE.getContent();
-                            tinyMCE.setContent(mceContent + '[[videoBase64=' + $.base64.btoa( videoContent) + ']]');
-							//tinyMCE.execCommand("mceInsertContent", false, mceContent + '[[videoBase64=' + $.base64.btoa( videoContent) + ']]');
+                            //var mceContent = tinyMCE.getContent();
+                            //tinyMCE.setContent(mceContent + '[[videoBase64=' + $.base64.btoa( videoContent) + ']]');
+							tinyMCE.execCommand("mceInsertContent", false, mceContent + '[[videoBase64=' + $.base64.btoa( videoContent) + ']]');
 						} else {
 							var content = $('#content')[0];
 							content.innerHTML += ( '[[videoBase64=' + $.base64.btoa( videoContent ) + ']]' );
