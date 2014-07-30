@@ -141,7 +141,7 @@
 						if( typeof tinyMCE != 'undefined' ) {
                             //var mceContent = tinyMCE.getContent();
                             //tinyMCE.setContent(mceContent + '[[videoBase64=' + $.base64.btoa( videoContent) + ']]');
-							tinyMCE.execCommand("mceInsertContent", false, mceContent + '[[videoBase64=' + $.base64.btoa( videoContent) + ']]');
+							tinyMCE.execCommand("mceInsertContent", false,  '[[videoBase64=' + $.base64.btoa( videoContent) + ']]');
 						} else {
 							var content = $('#content')[0];
 							content.innerHTML += ( '[[videoBase64=' + $.base64.btoa( videoContent ) + ']]' );
