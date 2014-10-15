@@ -1,6 +1,6 @@
 define(['jquery', './initializeDigg',  './initializeFavorite', 
-	'./initializeLazyload', './initializeShare', 'mediaelement'], 
-	function($, initializeDigg, initializeFavorite, initializeLazyload, initializeShare){
+	'./initializeLazyload', './initializeShare', './initializeVideo'], 
+	function($, initializeDigg, initializeFavorite, initializeLazyload, initializeShare, initializeVideo){
 		$(function(){
 			// 打分
 			initializeDigg();
@@ -15,6 +15,8 @@ define(['jquery', './initializeDigg',  './initializeFavorite',
 			//分享
 			initializeShare();
 
+			//视频播放
+			initializeVideo();
 			
 		});
 });
