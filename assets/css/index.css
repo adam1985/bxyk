@@ -9,6 +9,7 @@
 .show{display:block;}
 .none{display:none;}
 .warpper .hide{display:none !important;}
+.tindex{position:absolute; left:-9999px; top:-9999px;}
 .inline-block{display:inline-block;}
 .rela{position:relative;}
 .abso{position:absolute;}
