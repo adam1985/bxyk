@@ -16,6 +16,7 @@ body {
 .fr{float:right;}
 .cl{zoom:1;}
 .cl:after{content:"";display:block;height:0;clear:both;visibility:hidden}
+.tindex{position:absolute; left:-9999px; top:-9999px;}
 #wrapper {}
 a {
 	color: #000;
